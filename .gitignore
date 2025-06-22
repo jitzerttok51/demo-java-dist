@@ -1,0 +1,74 @@
+.gradle
+.idea
+build
+*.log
+*.lck
+
+.metadata
+tmp/
+bin/
+*.txt
+*.tmp
+*.bak?
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.class
+
+#IntelliJ
+*.iml
+out
+
+# Eclipse Core
+.project
+
+# Test data
+modules/launcher/SUMlauncher.jar
+modules/launcher/sum-setup.bat
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# Tern plugin
+.tern-project
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Code Recommenders
+.recommenders/
+/commons-io-2.4.0.jar
+/json-0.0.0-20080701.jar
+# exclude generated logs and created shadow file for the password under store folder
+modules/com.softwareag.fixinstall.core/logs/**
+modules/com.softwareag.fixinstall.headless/logs/**
+modules/com.softwareag.fixinstall.core/store/**
+modules/com.softwareag.fixinstall.cmdlineinstaller/logs/**
