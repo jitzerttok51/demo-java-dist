@@ -1,9 +1,12 @@
 
+import org.example.tasks.CreateRelease
 import org.example.tasks.DownloadJavaZipTask
 import org.example.tasks.UnzipJava
 import org.example.tasks.ZipJava
 
-val componentVersion = "1.0.1"
+val token: String = project.property("github.token") as String
+val componentVersion = "${project.property("build.major")}.${project.property("build.minor")}.${project.property("build.number")}"
+val jvmVersion: String = project.property("java.version") as String
 
 val platforms = listOf("windows", "linux", "macos")
 val zips: MutableList<Provider<RegularFile>> = mutableListOf()
@@ -11,7 +14,7 @@ val zips: MutableList<Provider<RegularFile>> = mutableListOf()
 platforms.forEach { platform ->
 
     val downloadJRE = tasks.register<DownloadJavaZipTask>("downloadJRE$platform") {
-        javaVersion.set("17")
+        javaVersion.set(jvmVersion)
         os.set(platform)
     }
 
@@ -31,4 +34,10 @@ platforms.forEach { platform ->
 
 tasks.register("distJava") {
     inputs.files(zips)
+}
+
+tasks.register<CreateRelease>("uploadJava") {
+    assets.addAll(zips)
+    version.set(componentVersion)
+    accessToken.set(token)
 }
