@@ -24,6 +24,9 @@ abstract class CreateRelease : DefaultTask() {
     abstract val version: Property<String>
 
     @get:Input
+    abstract val javaVersion: Property<String>
+
+    @get:Input
     abstract val accessToken: Property<String>
 
     @get:InputFiles
@@ -42,7 +45,7 @@ abstract class CreateRelease : DefaultTask() {
         body.put("tag_name", "v$version")
         body.put("target_commitish", "main")
         body.put("name", "v$version")
-        body.put("body", "Description of the release")
+        body.put("body", "$javaVersion")
         body.put("draft", false)
         body.put("prerelease", false)
         body.put("generate_release_notes", false)

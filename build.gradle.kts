@@ -40,4 +40,5 @@ tasks.register<CreateRelease>("uploadJava") {
     assets.addAll(zips)
     version.set(componentVersion)
     accessToken.set(token)
+    javaVersion.set(jvmVersion)
 }
